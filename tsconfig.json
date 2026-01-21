@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "target": "esnext"
+  },
+  "files": [
+    "src/Chat.ts",
+    "src/script.ts"
+  ]
+}

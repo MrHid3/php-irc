@@ -1,0 +1,53 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#chat{
+    display: block;
+    width: 40vw;
+    height: 90vh;
+    margin: 0 auto;
+    border: 2px solid black;
+    position: relative;
+}
+
+#chat li{
+    list-style: none;
+}
+
+li span{
+    padding: 5px;
+}
+
+.inputField{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    height: 50px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.messageInput{
+    width: calc(90% - 10px);
+    height: 100%;
+    line-height: 20px;
+    font-size: 20px;
+    border-radius: 10px 0 0 10px;
+    border: none;
+    padding: 5px;
+}
+
+.sendButton{
+    /*width: calc(10% - 10px);*/
+    width: 10%;
+    /*height: 40px;*/
+    height: 100%;
+    border-radius: 0 10px 10px 0;
+    border: none;
+}
