@@ -33,7 +33,7 @@ export class Chat{
         const username = prompt("What is your name?");
         this.user = new User(username);
 
-        this.poll(`ajax.php`);
+        this.poll(`longpoll.php`);
     }
 
     async sendMessage() {
