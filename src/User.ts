@@ -1,24 +1,9 @@
-export class User {
+export class User{
     username: string;
     color: string;
 
-    constructor(username: string) {
+    constructor(username: string, color: string) {
         this.username = username;
-        this.color = this.getRandomColor();
-        this.validateUsername()
+        this.color = color;
     }
-
-    validateUsername() {
-
-    }
-
-    getRandomColor() {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
-
 }

@@ -1,9 +1,10 @@
 import { Message } from "./Message.js"
+import { ThisUser } from "./ThisUser.js";
 import { User } from "./User.js";
 
 export class Chat{
     messages: Message[];
-    user: User;
+    user: ThisUser;
     serverURL: string;
     rootElement: HTMLElement;
     messageInput : HTMLInputElement;
@@ -31,7 +32,7 @@ export class Chat{
         })
 
         const username = prompt("What is your name?");
-        this.user = new User(username);
+        this.user = new ThisUser(username);
 
         this.poll(`longpoll.php`);
     }
@@ -51,10 +52,8 @@ export class Chat{
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-            })
+            body: message.toString(),
         })
-        this.messages.push(message);
     }
 
     testMessage(text: string) {
@@ -67,10 +66,14 @@ export class Chat{
         alert("Message not sent")
     }
 
-
     async poll(url: string) : Promise<void> {
         const data = await fetch(url);
-        const json = await data.json();
+        const result = await data.json();
+        for(let message of result){
+            console.log(message)
+            const sender = new User(message.sender, message.color);
+            const mess = new Message(sender, message.text, this, message.uuid);
+        }
         this.poll(url);
     }
 }

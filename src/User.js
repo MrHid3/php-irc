@@ -1,20 +1,9 @@
 export class User {
     username;
     color;
-    constructor(username) {
+    constructor(username, color) {
         this.username = username;
-        this.color = this.getRandomColor();
-        this.validateUsername();
-    }
-    validateUsername() {
-    }
-    getRandomColor() {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
+        this.color = color;
     }
 }
 //# sourceMappingURL=User.js.map

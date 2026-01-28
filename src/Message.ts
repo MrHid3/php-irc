@@ -1,5 +1,5 @@
-import {User} from "./User";
-import {Chat} from "./Chat";
+import {User} from "./User.js";
+import {Chat} from "./Chat.js";
 
 export class Message{
     sender: User;
@@ -9,11 +9,14 @@ export class Message{
     element: HTMLElement;
     parent: Chat;
 
-    constructor(sender: User, text: string, parent: Chat) {
+    constructor(sender: User, text: string, parent: Chat, uuid : string = "") {
         this.sender = sender;
         this.text = text;
-        this.uuid = crypto.randomUUID();
         this.parent = parent;
+        if(uuid === "")
+            this.uuid = crypto.randomUUID()
+        else
+            this.uuid = uuid;
 
         this.element = document.createElement('li');
         const username_span = document.createElement('span');
@@ -28,7 +31,7 @@ export class Message{
 
     toString() {
         return JSON.stringify({
-            username: this.sender.username,
+            sender: this.sender.username,
             color: this.sender.color,
             text: this.text,
             uuid: this.uuid,

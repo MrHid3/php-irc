@@ -12,6 +12,7 @@
     margin: 0 auto;
     border: 2px solid black;
     position: relative;
+    overflow-y: auto;
 }
 
 #chat li{

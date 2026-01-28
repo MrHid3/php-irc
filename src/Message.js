@@ -5,11 +5,14 @@ export class Message {
     color;
     element;
     parent;
-    constructor(sender, text, parent) {
+    constructor(sender, text, parent, uuid = "") {
         this.sender = sender;
         this.text = text;
-        this.uuid = crypto.randomUUID();
         this.parent = parent;
+        if (uuid === "")
+            this.uuid = crypto.randomUUID();
+        else
+            this.uuid = uuid;
         this.element = document.createElement('li');
         const username_span = document.createElement('span');
         username_span.innerText = this.sender.username;
@@ -22,7 +25,7 @@ export class Message {
     }
     toString() {
         return JSON.stringify({
-            username: this.sender.username,
+            sender: this.sender.username,
             color: this.sender.color,
             text: this.text,
             uuid: this.uuid,
