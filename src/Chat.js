@@ -8,10 +8,14 @@ export class Chat {
     rootElement;
     messageInput;
     sendButton;
+    messageDiv;
     constructor(rootElement, serverURL) {
         this.serverURL = serverURL;
         this.rootElement = rootElement;
         this.messages = [];
+        this.messageDiv = document.createElement("div");
+        this.messageDiv.id = "messageDiv";
+        this.rootElement.appendChild(this.messageDiv);
         const inputField = document.createElement("div");
         inputField.classList.add("inputField");
         this.rootElement.appendChild(inputField);
@@ -26,7 +30,10 @@ export class Chat {
         this.sendButton.addEventListener("click", () => {
             this.sendMessage();
         });
-        const username = prompt("What is your name?");
+        let username = prompt("What is your name?");
+        while (username == "") {
+            username = prompt("What is your name?");
+        }
         this.user = new ThisUser(username);
         this.poll(`longpoll.php`);
     }
@@ -58,7 +65,6 @@ export class Chat {
         const data = await fetch(url);
         const result = await data.json();
         for (let message of result) {
-            console.log(message);
             const sender = new User(message.sender, message.color);
             const mess = new Message(sender, message.text, this, message.uuid);
         }

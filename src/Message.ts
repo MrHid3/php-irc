@@ -26,7 +26,8 @@ export class Message{
         const message_span = document.createElement('span');
         message_span.textContent = this.text;
         this.element.appendChild(message_span);
-        this.parent.rootElement.appendChild(this.element);
+        this.parent.messageDiv.appendChild(this.element);
+        this.parent.messageDiv.scrollTo(0, this.parent.messageDiv.scrollHeight);
     }
 
     toString() {
